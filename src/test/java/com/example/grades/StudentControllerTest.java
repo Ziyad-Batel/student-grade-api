@@ -32,4 +32,11 @@ public class StudentControllerTest {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.name").value("Khalid"));
     }
+
+    @Test                                                       // ⬅️ جديد
+    void healthCheckShouldReturnUp() throws Exception {         // ⬅️ جديد
+        mockMvc.perform(get("/api/health"))                     // ⬅️ جديد
+            .andExpect(status().isOk())                         // ⬅️ جديد
+            .andExpect(jsonPath("$.status").value("UP"));       // ⬅️ جديد
+    }                                                           // ⬅️ جديد
 }

@@ -1,7 +1,7 @@
 package com.example.grades;
 
-import org.slf4j.Logger;                                   // ⬅️ جديد
-import org.slf4j.LoggerFactory;                            // ⬅️ جديد
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -9,8 +9,8 @@ import java.util.*;
 @RequestMapping("/api")
 public class StudentController {
 
-    private static final Logger logger =                   // ⬅️ جديد
-        LoggerFactory.getLogger(StudentController.class);  // ⬅️ جديد
+    private static final Logger logger =
+        LoggerFactory.getLogger(StudentController.class);
 
     private List<Student> students = new ArrayList<>(List.of(
         new Student(1L, "Ahmed", "SE4111", 95.0),
@@ -34,7 +34,13 @@ public class StudentController {
     public Student add(@RequestBody Student s) {
         s.setId((long) (students.size() + 1));
         students.add(s);
-        logger.info("Added student: id={}, name={}", s.getId(), s.getName());   // ⬅️ جديد
+        logger.info("Added student: id={}, name={}", s.getId(), s.getName());
         return s;
     }
+
+    @GetMapping("/health")                         // ⬅️ جديد
+    public Map<String, String> health() {          // ⬅️ جديد
+        logger.info("Health check called");        // ⬅️ جديد
+        return Map.of("status", "UP");             // ⬅️ جديد
+    }                                              // ⬅️ جديد
 }
