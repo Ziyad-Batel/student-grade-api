@@ -38,9 +38,9 @@ public class StudentController {
         return s;
     }
 
-    @GetMapping("/health")                         // ⬅️ جديد
-    public Map<String, String> health() {          // ⬅️ جديد
-        logger.info("Health check called");        // ⬅️ جديد
-        return Map.of("status", "UP");             // ⬅️ جديد
-    }                                              // ⬅️ جديد
+    @GetMapping("/health")                       
+    public Map<String, String> health() {         
+        logger.info("Health check called");     
+        return Map.of("status", "ziyad");          
+    }                                             
 }
